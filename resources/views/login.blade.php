@@ -8,7 +8,6 @@
 </head>
 
 <body>
-  <h1>{{$content}}</h1>
   <form action="/" method="POST">
     @csrf
     <input type="text" name="content" >
