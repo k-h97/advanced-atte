@@ -34,6 +34,43 @@
       font-size:20px;
       padding-top:30px;
     }
+    .stamp-button {
+      text-align:center;
+    }
+    .str-attendance {
+      width:25%;
+      height:120px;
+      background-color:white;
+      margin:10px 20px 30px 0px;
+      font-weight:bold;
+      font-size:18px;
+      border:none;
+    }
+    .fin-attendance {
+      width:25%;
+      height:120px;
+      background-color:white;
+      font-weight:bold;
+      font-size:18px;
+      border:none;
+    }
+    .str-rest {
+      width:25%;
+      height:120px;
+      background-color:white;
+      margin-right: 20px;
+      font-weight:bold;
+      font-size:18px;
+      border:none;
+    }
+    .fin-rest {
+      width:25%;
+      height:120px;
+      background-color:white;
+      font-weight:bold;
+      font-size:18px;
+      border:none;
+    }
     .footer-text {
       text-align:center;
       font-weight:bold;
@@ -56,7 +93,13 @@
     <div class="stamp-ttl">
       <p>さんお疲れ様です!</p>
     </div>
-    
+    <div class="stamp-button">
+      <button class="str-attendance" type="button">勤務開始</button>
+      <button class="fin-attendance" type="button">勤務終了</button>
+      <br>
+      <button class="str-rest" type="button">休憩開始</button>
+      <button class="fin-rest" type="button">休憩終了</button>
+    </div>
   </div>
   <footer>
     <p class="footer-text">Atte,inc.</p>
