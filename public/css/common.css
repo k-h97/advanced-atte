@@ -1,4 +1,6 @@
 .header {
+    display: flex;
+    justify-content: space-between;
     height: 100px;
     line-height: 100px;
 }
@@ -6,6 +8,18 @@
 .header-ttl {
     margin-left: 60px;
     font-size: 36px;
+}
+
+.header-nav-list {
+    display: flex;
+    font-weight: bold;
+    list-style: none;
+}
+
+.header-nav-item {
+    margin-right: 50px;
+    text-decoration: none;
+    color: #1549e6;
 }
 
 .footer {

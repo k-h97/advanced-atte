@@ -1,0 +1,25 @@
+.date {
+    height: calc(100vh - 150px);
+    background-color: #eeeeee;
+}
+
+.date-ttl {
+    padding: 40px 0 40px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table-list {
+  border-top: 1px solid #AAAAAA;
+  border-bottom: 1px solid #AAAAAA;
+}
+
+.table-item {
+  line-height: 80px;
+}

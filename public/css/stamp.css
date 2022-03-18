@@ -1,0 +1,53 @@
+.stamp {
+    height: calc(100vh - 150px);
+    background-color: #EEEEEE;
+}
+
+.stamp-ttl {
+    padding: 60px 0 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.stamp-button {
+    text-align: center;
+}
+
+.str-attendance {
+    width: 30%;
+    height: 140px;
+    background-color: white;
+    margin: 10px 40px 40px 0px;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+}
+
+.fin-attendance {
+    width: 30%;
+    height: 140px;
+    background-color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+}
+
+.str-rest {
+    width: 30%;
+    height: 140px;
+    background-color: white;
+    margin-right: 40px;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+}
+
+.fin-rest {
+    width: 30%;
+    height: 140px;
+    background-color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+}

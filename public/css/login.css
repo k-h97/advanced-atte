@@ -1,0 +1,55 @@
+.login {
+    height: calc(100vh - 150px);
+    background-color: #EEEEEE;
+}
+
+.login-ttl {
+    padding: 60px 0 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width:  28%;
+}
+
+.form-email, .form-password {
+    box-sizing: border-box;
+    margin: 10px;
+    padding-left: 10px;
+    height: 45px;
+    border: 2px solid #AAAAAA;
+    border-radius: 5px;
+    background-color: #EEEEEE;
+}
+
+.form-submit {
+    margin: 10px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1549e6;
+    color:white;
+}
+
+.register {
+    margin: 20px auto;
+    color: #AAAAAA;
+}
+
+.register-text {
+    text-align: center;
+}
+
+.register-url {
+    display: block;
+    margin-top: 10px;
+    color: #1549e6;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+}

@@ -13,6 +13,13 @@
 <body>
     <header class="header">
         <h1 class="header-ttl">Atte</h1>
+        <nav class="header-nav">
+            <ul class="header-nav-list">
+                <li><a class="header-nav-item" href="/">ホーム</a></li>
+                <li><a class="header-nav-item" href="/attendance">日付一覧</a></li>
+                <li><a class="header-nav-item" href="/logout">ログアウト</a></li>
+            </ul>
+        </nav>
     </header>
 
     @yield('content')
@@ -21,4 +28,5 @@
         <p class="footer-text">Atte,inc.</p>
     </footer>
 </body>
+
 </html>
