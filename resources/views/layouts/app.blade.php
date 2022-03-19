@@ -17,7 +17,12 @@
             <ul class="header-nav-list">
                 <li><a class="header-nav-item" href="/">ホーム</a></li>
                 <li><a class="header-nav-item" href="/attendance">日付一覧</a></li>
-                <li><a class="header-nav-item" href="/logout">ログアウト</a></li>
+                <li>
+                    <form class="header-nav-item" action="/logout" method="POST">
+                        @csrf
+                        <input type="submit" value="ログアウト">
+                    </form>
+                </li>
             </ul>
         </nav>
     </header>
