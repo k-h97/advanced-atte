@@ -20,7 +20,7 @@
                 <li>
                     <form class="header-nav-item" action="/logout" method="POST">
                         @csrf
-                        <input type="submit" value="ログアウト">
+                        <input class="logout-icon" type="submit" value="ログアウト">
                     </form>
                 </li>
             </ul>
