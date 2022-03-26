@@ -7,11 +7,17 @@
 @section('content')
 <div class="stamp">
     <div class="stamp-ttl">
-        <p>さんお疲れ様です!</p>
+        <p>{{ Auth::user()->name }}さんお疲れ様です!</p>
     </div>
     <div class="stamp-button">
-        <button class="str-attendance" type="button">勤務開始</button>
-        <button class="fin-attendance" type="button">勤務終了</button>
+        <form action="/attendance/start" method="post">
+            @csrf
+            <button class="str-attendance" type="submit">勤務開始</button>
+        </form>
+        <form action="/attendance/end" method="post">
+            @csrf
+            <button class="fin-attendance" type="submit">勤務終了</button>
+        </form>
         <br>
         <button class="str-rest" type="button">休憩開始</button>
         <button class="fin-rest" type="button">休憩終了</button>
