@@ -10,44 +10,31 @@
     font-size: 24px;
 }
 
-.stamp-button {
+.stamp-button-list {
+    width: 60%;
     text-align: center;
+    margin: 0 auto;
 }
 
-.str-attendance {
-    width: 30%;
-    height: 140px;
-    background-color: white;
-    margin: 10px 40px 40px 0px;
-    font-weight: bold;
-    font-size: 18px;
-    border: none;
+.stamp-button-flex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
 }
 
-.fin-attendance {
-    width: 30%;
+.stamp-button {
+    width: 400px;
     height: 140px;
     background-color: white;
     font-weight: bold;
     font-size: 18px;
     border: none;
+    cursor: pointer;
 }
 
-.str-rest {
-    width: 30%;
+.stamp-text {
+    width: 400px;
     height: 140px;
+    line-height: 140px;
     background-color: white;
-    margin-right: 40px;
-    font-weight: bold;
-    font-size: 18px;
-    border: none;
-}
-
-.fin-rest {
-    width: 30%;
-    height: 140px;
-    background-color: white;
-    font-weight: bold;
-    font-size: 18px;
-    border: none;
 }

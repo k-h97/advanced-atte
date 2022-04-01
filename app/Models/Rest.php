@@ -10,14 +10,8 @@ class Rest extends Model
     use HasFactory;
 
     protected $fillable = [
-        //"attendance_id",
-        "user_id",
-        "date",
+        "attendance_id",
         "start_time",
         "end_time"
     ];
-
-    //public function attendance(){
-        //return $this->belongsTo('App\Attendance');
-    //}
 }
