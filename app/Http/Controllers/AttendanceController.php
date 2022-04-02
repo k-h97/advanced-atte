@@ -4,14 +4,40 @@ namespace App\Http\Controllers;
 
 use App\Models\Attendance;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AttendanceController extends Controller
 {
     public function index()
     {
-        return view("stamp");
+        // Attendanceの中で今日の自分のデータを取得する
+        $user_id = Auth::user()->id;
+
+        $now = Carbon::now();
+        $date = $now->format('Y-m-d');
+
+        $attendance = Attendance::where("user_id", $user_id)->where("date", $date)->first();
+
+        $can_atte_start = true;
+        $can_atte_end = false;
+
+        if ($attendance) {
+            $atte_start_time = $attendance->start_time;
+            $atte_end_time = $attendance->end_time;
+
+            if ($atte_start_time) {
+                $can_atte_start = false;
+            }
+
+            if ($atte_start_time && !$atte_end_time) {
+                $can_atte_end = true;
+            }
+        }
+
+        return view("stamp", [
+            'can_atte_start' => $can_atte_start,
+            'can_atte_end' => $can_atte_end
+        ]);
     }
 
     public function start()
