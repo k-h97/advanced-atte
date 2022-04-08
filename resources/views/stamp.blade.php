@@ -31,14 +31,23 @@
         </div>
 
         <div class="stamp-button-flex">
+            @if($can_rest_start)
             <form class="button-item" action="/rest/start" method="post">
                 @csrf
                 <button class="stamp-button" type="submit">休憩開始</button>
             </form>
+            @else
+            <div class="stamp-text">休憩開始</div>
+            @endif
+
+            @if($can_rest_end)
             <form class="button-item" action="/rest/end" method="post">
                 @csrf
                 <button class="stamp-button" type="submit">休憩終了</button>
             </form>
+            @else
+            <div class="stamp-text">休憩終了</div>
+            @endif
         </div>
     </div>
 </div>

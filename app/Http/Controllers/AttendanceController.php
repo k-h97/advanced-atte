@@ -18,8 +18,19 @@ class AttendanceController extends Controller
 
         $attendance = Attendance::where("user_id", $user_id)->where("date", $date)->first();
 
+        $user_id1 = Auth::user()->id;
+
+        $now1 = Carbon::now();
+        $date1 = $now1->format('Y-m-d');
+
+        $rest = Attendance::where("user_id", $user_id1)->where("date", $date1)->first();
+
         $can_atte_start = true;
         $can_atte_end = false;
+
+        $can_rest_start = false;
+        $can_rest_end = false;
+
 
         if ($attendance) {
             $atte_start_time = $attendance->start_time;
@@ -34,9 +45,25 @@ class AttendanceController extends Controller
             }
         }
 
+        if ($rest) {
+            $rest_start_time = $rest->start_time1;
+            $rest_end_time = $rest->end_time1;
+
+            if ($atte_start_time) {
+                $can_rest_start = true;
+            }
+
+            if ($rest_start_time && !$rest_end_time) {
+                $can_rest_start = false;
+                $can_rest_end = true;
+            }
+        }
+
         return view("stamp", [
             'can_atte_start' => $can_atte_start,
-            'can_atte_end' => $can_atte_end
+            'can_atte_end' => $can_atte_end,
+            'can_rest_start' => $can_rest_start,
+            'can_rest_end' => $can_rest_end
         ]);
     }
 

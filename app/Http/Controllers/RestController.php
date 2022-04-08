@@ -17,13 +17,13 @@ class RestController extends Controller
         $now = Carbon::now();
         $date = $now->format('Y-m-d');
 
-        $attendance = Attendance::where("user_id", $user_id)->where("date", $date)->first();
+        $rest = Attendance::where("user_id", $user_id)->where("date", $date)->first();
 
         // 現在の時刻を取得する
         $start_time = $now->format('H:i:s');
 
         Rest::create([
-            "attendance_id" => $attendance->id,
+            "attendance_id" => $rest->id,
             "start_time" => $start_time
         ]);
         // リダイレクト
@@ -37,9 +37,7 @@ class RestController extends Controller
         $now = Carbon::now();
         $date = $now->format('Y-m-d');
 
-        $attendance = Attendance::where("user_id", $user_id)->where("date", $date)->first();
-
-        $rest = Rest::where("attendance_id", $attendance->id)->first();
+        $rest = Attendance::where("user_id", $user_id)->where("date", $date)->first();
 
         $end_time = $now->format('H:i:s');
 
