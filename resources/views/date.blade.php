@@ -7,7 +7,7 @@
 @section('content')
 <div class="date">
     <div class="date-ttl">
-        <p>2021-11-01</p>
+        <p>{{ \Carbon\Carbon::now()->format('Y-m-d') }}</p>
     </div>
     <table class="table">
         <tr class="table-list">
@@ -17,10 +17,14 @@
             <th class="table-item">休憩時間</th>
             <th class="table-item">勤務時間</th>
         </tr>
-
+        @foreach ($attendanceList as $attendance)
         <tr>
-            <td>
-            </td>
+            <td>{{ $attendance['username'] }}</td>
+            <td>{{ $attendance['attendance']->start_time }}</td>
+            <td>{{ $attendance['attendance']->end_time }}</td>
+            <td></td>
+            <td></td>
         </tr>
+        @endforeach
     </table>
 @endsection
