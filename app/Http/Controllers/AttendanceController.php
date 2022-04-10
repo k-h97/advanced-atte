@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Rest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
