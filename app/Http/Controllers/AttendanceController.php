@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Attendance;
 use App\Models\Rest;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,19 +20,11 @@ class AttendanceController extends Controller
 
         $attendance = Attendance::where("user_id", $user_id)->where("date", $date)->first();
 
-        $user_id1 = Auth::user()->id;
-
-        $now1 = Carbon::now();
-        $date1 = $now1->format('Y-m-d');
-
-        $rest = Attendance::where("user_id", $user_id1)->where("date", $date1)->first();
-
         $can_atte_start = true;
         $can_atte_end = false;
 
         $can_rest_start = false;
         $can_rest_end = false;
-
 
         if ($attendance) {
             $atte_start_time = $attendance->start_time;
@@ -44,19 +37,27 @@ class AttendanceController extends Controller
             if ($atte_start_time && !$atte_end_time) {
                 $can_atte_end = true;
             }
-        }
 
-        if ($rest) {
-            $rest_start_time = $rest->start_time1;
-            $rest_end_time = $rest->end_time1;
+            $rest = Rest::where('attendance_id', $attendance->id)->latest()->first();
 
-            if ($atte_start_time) {
-                $can_rest_start = true;
-            }
+            if ($rest) {
+                $rest_start_time = $rest->start_time;
+                $rest_end_time = $rest->end_time;
 
-            if ($rest_start_time && !$rest_end_time) {
-                $can_rest_start = false;
-                $can_rest_end = true;
+                // 休憩終了直後
+                if ($atte_start_time && !$atte_end_time && $rest_end_time) {
+                    $can_rest_start = true;
+                }
+
+                if (!$atte_end_time && $rest_start_time && !$rest_end_time) {
+                    $can_rest_end = true;
+                    $can_atte_end = false;
+                }
+            } else {
+                // 勤務開始直後
+                if ($atte_start_time && !$atte_end_time) {
+                    $can_rest_start = true;
+                }
             }
         }
 
@@ -105,5 +106,35 @@ class AttendanceController extends Controller
 
         // リダイレクト
         return redirect("/");
+    }
+
+    public function date()
+    {
+        // dateを用意する（今日の日付を用意する）
+        $now = Carbon::now();
+        $date = $now->format('Y-m-d');
+
+        $attendances = Attendance::where("date", $date)->get();
+
+        $attendanceList = [];
+
+        foreach ($attendances as $index => $attendance) {
+            $user = User::where('id', $attendance->user_id)->first();
+
+            $attendanceList[$index]['attendance'] = $attendance;
+            $attendanceList[$index]['username'] = $user->name;
+
+            // $attendanceに紐づいた休憩を取得する
+
+            // 休憩をforeachで分解する
+
+            // 終了時刻と開始時刻の差を計算する（秒で比較する）
+
+            // それぞれの計算結果を合計する
+
+            // 時：分：秒に直す
+        }
+
+        return view('date', ['attendanceList' => $attendanceList]);
     }
 }

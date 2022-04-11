@@ -10,9 +10,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/attendance/end', [AttendanceController::class, 'end']);
     Route::post('/rest/start', [RestController::class, 'start']);
     Route::post('/rest/end', [RestController::class, 'end']);
-    Route::get('/attendance', function () {
-        return view('date');
-    });
+    Route::get('/attendance', [AttendanceController::class, 'date']);
 });
 
 require __DIR__.'/auth.php';
