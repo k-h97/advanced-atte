@@ -22,8 +22,8 @@
             <td>{{ $attendance['username'] }}</td>
             <td>{{ $attendance['attendance']->start_time }}</td>
             <td>{{ $attendance['attendance']->end_time }}</td>
-            <td></td>
-            <td></td>
+            <td>{{ $attendance['rest_hms'] }}</td>
+            <td>{{ $attendance['atte_hms'] }}</td>
         </tr>
         @endforeach
     </table>
