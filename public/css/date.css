@@ -17,9 +17,16 @@
 
 .table-list {
   border-top: 1px solid #AAAAAA;
-  border-bottom: 1px solid #AAAAAA;
 }
 
 .table-item {
   line-height: 80px;
+}
+td {
+  text-align: center;
+  line-height: 60px;
+  font-size: 18px;
+}
+tr {
+  border-top: 1px solid #AAAAAA;
 }
