@@ -125,14 +125,44 @@ class AttendanceController extends Controller
             $attendanceList[$index]['username'] = $user->name;
 
             // $attendanceに紐づいた休憩を取得する
+            $rests = Rest::where('attendance_id', $attendance->id)->get();
 
+            $rest_sum = 0;
             // 休憩をforeachで分解する
+            foreach ($rests as $rest) {
+                // 終了時刻と開始時刻の差を計算する（秒で比較する）
+                $rest_start_time = new Carbon($rest->start_time);
+                $rest_end_time = new Carbon($rest->end_time);
 
-            // 終了時刻と開始時刻の差を計算する（秒で比較する）
+                $rest_diff = $rest_start_time ->diffInSeconds($rest_end_time);
 
-            // それぞれの計算結果を合計する
+                $rest_sum = $rest_sum + $rest_diff;
+            }
 
             // 時：分：秒に直す
+            $rest_h = floor($rest_sum / 3600);
+            $rest_m = floor(($rest_sum / 60) % 60);
+            $rest_s = $rest_sum % 60;
+
+            $rest_hms = sprintf("%02d:%02d:%02d", $rest_h, $rest_m, $rest_s);
+
+            $attendanceList[$index]['rest_hms'] = $rest_hms;
+
+            $atte_start_time = new Carbon($attendance->start_time);
+            $atte_end_time = new Carbon($attendance->end_time);
+
+            $atte_diff = $atte_start_time ->diffInSeconds($atte_end_time);
+
+            $atte_sum = $atte_diff - $rest_sum;
+
+            // 時：分：秒に直す
+            $atte_h = floor($atte_sum / 3600);
+            $atte_m = floor(($atte_sum / 60) % 60);
+            $atte_s = $atte_sum % 60;
+
+            $atte_hms = sprintf("%02d:%02d:%02d", $atte_h, $atte_m, $atte_s);
+
+            $attendanceList[$index]['atte_hms'] = $atte_hms;
         }
 
         return view('date', ['attendanceList' => $attendanceList]);
